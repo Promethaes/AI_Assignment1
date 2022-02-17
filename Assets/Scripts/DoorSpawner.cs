@@ -34,16 +34,14 @@ public class DoorSpawner : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-            float rand = Random.Range(0.0f, 100.0f);
             string choice = "";
+
             foreach (var d in diction.OrderByDescending((a) => a.Value))
             {
+                float rand = Random.Range(0.0f, 100.0f);
                 //if the random number is within the chance range, set the choice to this type
                 if (rand <= d.Value * 100.0f)
                     choice = d.Key;
-                else
-                    break;
-
             }
             if (choice == "")
             {
@@ -65,7 +63,7 @@ public class DoorSpawner : MonoBehaviour
 
             for (int i = 0; i < c.Value; i++)
             {
-                var door = GameObject.Instantiate(doorPrefab.gameObject, new Vector3(counter * 4.0f, 0.0f, 11110.0f), Quaternion.Euler(0.0f,180.0f,0.0f));
+                var door = GameObject.Instantiate(doorPrefab.gameObject, new Vector3(counter * 4.0f, 0.0f, 11110.0f), Quaternion.Euler(0.0f, 180.0f, 0.0f));
                 door.GetComponent<Door>().SetHotNoisySafe(hot, noisy, safe);
                 doors.Add(door);
                 counter++;
